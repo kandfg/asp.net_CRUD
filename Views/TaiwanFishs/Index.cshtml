@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Fish.Models.TaiwanFish>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>首頁</h2>
+
+<p>
+    @Html.ActionLink("新增魚類資料", "Create")
+    @ViewBag.path
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Taiwan_Distribution)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Habitat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Max_body_length)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Image_Path)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taiwan_Distribution)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Habitat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Max_body_length)
+        </td>
+        <td>
+            <img src=@Html.DisplayFor(modelItem => item.Image_Path) width="200" heigh="100" alt="魚類圖片">
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("檢視", "Details", new { id=item.Id }) |
+            @Html.ActionLink("刪除", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
